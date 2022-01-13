@@ -1,0 +1,57 @@
+<main>
+  <section id="plotter" class="pb-5 mt-5">
+    <div class="container">
+      <div class="col-md-12 header text-center mb-5">
+        <h1 class="mb-4">plotter</h1>
+      </div>
+      <div class="row border-top-pink">
+          <div class="columnContainer col-lg-3 col-md-4 col-12">
+            <div>
+             <h5>columns</h5>
+            </div>
+            <div class="border-top-pink columnList">
+              <p class="my-2">prod 1</p>
+              <p class="my-2">prod 1</p>
+              <p class="my-2">prod 1</p>
+              <p class="my-2">prod 1</p>
+              <p class="my-2">prod 1</p>
+              <p class="my-2">prod 1</p>
+            </div>
+
+          </div>
+          <div class="col-lg-9 col-md-8 col-12 row">
+            <div class="form-group d-flex align-items-center container m-3">
+              <label>Dimension</label>
+              <input
+                type="text"
+                class="form-control"
+              />
+              <button
+                class="btn btn-pink rounded-pill col-md-2 col-4 mx-2"
+                (click)="clearDimensionBox()"
+              >
+              delete
+              </button>
+            </div>
+
+            <div class="form-group d-flex align-items-center container m-3">
+              <label>Measures</label>
+              <input
+                type="text"
+                class="form-control"
+              />
+              <button
+                class="btn btn-pink rounded-pill col-md-2 col-4 mx-2"
+                (click)="clearMeasuresBox()"
+              >
+              delete
+              </button>
+            </div>
+
+
+            <!-- graph -->
+          </div>
+      </div>
+    </div>
+  </section>
+</main>
