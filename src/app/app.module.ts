@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PlotterComponent } from './components/plotter/plotter.component';
 
+import { NgxEchartsModule } from 'ngx-echarts';
 @NgModule({
   declarations: [
     AppComponent,
@@ -13,7 +14,8 @@ import { PlotterComponent } from './components/plotter/plotter.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxEchartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
