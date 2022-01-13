@@ -10,12 +10,7 @@
              <h5>columns</h5>
             </div>
             <div class="border-top-pink columnList">
-              <p class="my-2">prod 1</p>
-              <p class="my-2">prod 1</p>
-              <p class="my-2">prod 1</p>
-              <p class="my-2">prod 1</p>
-              <p class="my-2">prod 1</p>
-              <p class="my-2">prod 1</p>
+              <p *ngFor="let item of ColumnsObj" class="my-2">{{item.name}} <span>"{{item.function}}"</span></p>
             </div>
 
           </div>
