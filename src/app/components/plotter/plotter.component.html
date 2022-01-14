@@ -1,0 +1,83 @@
+<main>
+  <section id="plotter" class="pb-5 mt-5">
+    <div class="container">
+      <div class="col-md-12 header text-center mb-5">
+        <h1 class="mb-4">plotter</h1>
+      </div>
+      <div class="row border-top-blue">
+        <div class="columnContainer col-lg-3 col-md-4 col-12">
+          <div>
+            <h5>columns</h5>
+          </div>
+          <!-- dragable list  -->
+          <div
+            class="border-top-blue columnList"
+            cdkDropList
+            #todo="cdkDropList"
+            [cdkDropListData]="ColumnsObj"
+            [cdkDropListConnectedTo]="[Dimension,Measures]"
+          >
+            <div class="dragable-item" *ngFor="let column of ColumnsObj" cdkDrag>
+              <div class="custom-placeholder" *cdkDragPlaceholder></div>
+              {{ column.name }} <span>"{{ column.function }}"</span>
+            </div>
+          </div>
+          <!-- end dragable list  -->
+        </div>
+        <div class="col-lg-9 col-md-8 col-12 row">
+          <div class="form-group d-flex align-items-center container m-3">
+            <label>Dimension</label>
+
+            <div
+              class="drpableBox col-md-8 col-6"
+              cdkDropList
+              #Dimension="cdkDropList"
+              [cdkDropListData]="DimensionList"
+              [cdkDropListEnterPredicate]="
+                dropListEnterPredicate(DimensionList)
+              "
+              (cdkDropListDropped)="onDrop($event,'dimension')"
+            >
+              <div class="box" *ngFor="let item of DimensionList">
+                {{ item.name }}
+              </div>
+            </div>
+
+            <button
+              class="btn btn-pink mx-2"
+              (click)="clearBox(DimensionList,'dimension')"
+            >
+            <i class="bi bi-trash"></i>
+            </button>
+          </div>
+
+          <div class="form-group d-flex align-items-center container m-3">
+            <label>Measures</label>
+            <div
+            class="drpableBox col-md-8 col-6"
+            cdkDropList
+            #Measures="cdkDropList"
+            [cdkDropListData]="MeasureList"
+            (cdkDropListDropped)="onDrop($event,'measure')"
+          >
+            <div class="box" *ngFor="let item of MeasureList">
+              {{ item.name }}
+            </div>
+          </div>
+            <button
+              class="btn btn-pink mx-2"
+              (click)="clearBox(MeasureList,'measure')"
+            >
+            <i class="bi bi-trash"></i>
+            </button>
+          </div>
+
+          <!-- graph -->
+
+          <div  *ngIf="isShown" echarts [options]="echartOptions" class="plot-chart"></div>
+          <!-- end graph -->
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
