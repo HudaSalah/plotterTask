@@ -149,7 +149,7 @@ export class PlotterComponent implements OnInit {
       this.drawPlot(this.PlotObjs);
     },
     (err)=>{
-      console.log(err)
+      this.ApiService.redirectToNotFound();
     });
   }
 
@@ -159,7 +159,7 @@ export class PlotterComponent implements OnInit {
         this.ColumnsObj = res as Column[];
       },
       (err)=>{
-        console.log(err)
+        this.ApiService.redirectToNotFound();
       }
     );
   }

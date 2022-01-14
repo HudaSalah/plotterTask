@@ -6,10 +6,12 @@ import { AppComponent } from './app.component';
 import { PlotterComponent } from './components/plotter/plotter.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 @NgModule({
   declarations: [
     AppComponent,
-    PlotterComponent
+    PlotterComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
