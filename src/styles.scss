@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap-icons/font/bootstrap-icons.css";
 *,
 *:before,
 *:after {
@@ -10,10 +11,7 @@ $color-pink: #f1125b;
 $color-light-pink: #f77ea6;
 $color-blue: #1e8fff;
 $color-light-blue: #76baff;
-$color-petroleum: #172c3d;
-$color-dark-petroleum: #11202e;
 $color-gray: #5a5555;
-$color-green: #1db57b;
 
 //responsive
 $information-laptopLarge: "only screen and (max-width : 1440px)";
@@ -63,53 +61,16 @@ body {
   outline: none !important;
   box-shadow: none !important;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "MyWebFont-bd";
-}
+
 button:disabled,
 button[disabled] {
   cursor: not-allowed;
 }
 // main elements
-$border-radius: 40px;
-
-%box-element {
-  box-shadow: 7px 7px 20px 0px rgb(0, 0, 0, 0.12);
-  border-radius: 6px;
-  border: none;
-}
-
-%input {
-  box-shadow: 9px 9px 19px 0px rgba(0, 0, 0, 0.13);
-  background-color: white;
-  border: none;
-  border-radius: 15px;
-  height: 60px;
-  font-family: "MyWebFont-bd";
-  font-size: 12px;
-  transition: 0.2s;
-
-  &::placeholder {
-    color: $color-gray;
-    font-weight: normal;
-  }
-  &:focus-within {
-    border-bottom: 2px solid $color-blue;
-  }
-}
 
 .btn-blue {
   @include btn($color-blue);
 }
 .btn-pink {
   @include btn($color-pink);
-}
-
-input {
-  @extend %input;
 }
