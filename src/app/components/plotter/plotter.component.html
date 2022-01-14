@@ -5,50 +5,78 @@
         <h1 class="mb-4">plotter</h1>
       </div>
       <div class="row border-top-pink">
-          <div class="columnContainer col-lg-3 col-md-4 col-12">
-            <div>
-             <h5>columns</h5>
-            </div>
-            <div class="border-top-pink columnList">
-              <p *ngFor="let item of ColumnsObj" class="my-2">{{item.name}} <span>"{{item.function}}"</span></p>
-            </div>
-
+        <div class="columnContainer col-lg-3 col-md-4 col-12">
+          <div>
+            <h5>columns</h5>
           </div>
-          <div class="col-lg-9 col-md-8 col-12 row">
-            <div class="form-group d-flex align-items-center container m-3">
-              <label>Dimension</label>
-              <input
-                type="text"
-                class="form-control"
-              />
-              <button
-                class="btn btn-pink rounded-pill col-md-2 col-4 mx-2"
-                (click)="clearDimensionBox()"
-              >
-              delete
-              </button>
+          <!-- dragable list  -->
+          <div
+            class="border-top-pink columnList"
+            cdkDropList
+            #todo="cdkDropList"
+            [cdkDropListData]="ColumnsObj"
+            [cdkDropListConnectedTo]="[Dimension,Measures]"
+          >
+            <div class="example-box" *ngFor="let column of ColumnsObj" cdkDrag>
+              <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+              {{ column.name }} <span>"{{ column.function }}"</span>
             </div>
-
-            <div class="form-group d-flex align-items-center container m-3">
-              <label>Measures</label>
-              <input
-                type="text"
-                class="form-control"
-              />
-              <button
-                class="btn btn-pink rounded-pill col-md-2 col-4 mx-2"
-                (click)="clearMeasuresBox()"
-              >
-              delete
-              </button>
-            </div>
-
-
-            <!-- graph -->
-
-            <div echarts [options]="echartOptions" class="plot-chart"></div>
-            <!-- end graph -->
           </div>
+          <!-- end dragable list  -->
+        </div>
+        <div class="col-lg-9 col-md-8 col-12 row">
+          <div class="form-group d-flex align-items-center container m-3">
+            <label>Dimension</label>
+
+            <div
+              class="drpableBox col-8 dimension example-list"
+              cdkDropList
+              #Dimension="cdkDropList"
+              [cdkDropListData]="DimensionList"
+              [cdkDropListEnterPredicate]="
+                dropListEnterPredicate(DimensionList)
+              "
+              (cdkDropListDropped)="dimensionDrop($event)"
+            >
+              <div *ngFor="let item of DimensionList">
+                {{ item.name }}
+              </div>
+            </div>
+
+            <button
+              class="btn btn-pink rounded-pill col-md-2 col-4 mx-2"
+              (click)="clearDimensionBox()"
+            >
+              delete
+            </button>
+          </div>
+
+          <div class="form-group d-flex align-items-center container m-3">
+            <label>Measures</label>
+            <div
+            class="drpableBox col-8 measure example-list"
+            cdkDropList
+            #Measures="cdkDropList"
+            [cdkDropListData]="MeasureList"
+            (cdkDropListDropped)="measuresDrop($event)"
+          >
+            <div *ngFor="let item of MeasureList">
+              {{ item.name }}
+            </div>
+          </div>
+            <button
+              class="btn btn-pink rounded-pill col-md-2 col-4 mx-2"
+              (click)="clearMeasuresBox()"
+            >
+              delete
+            </button>
+          </div>
+
+          <!-- graph -->
+
+          <div echarts [options]="echartOptions" class="plot-chart"></div>
+          <!-- end graph -->
+        </div>
       </div>
     </div>
   </section>
